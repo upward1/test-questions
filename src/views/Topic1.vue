@@ -31,6 +31,7 @@
                         end-placeholder="结束日期"
                         unlink-panels>
         </el-date-picker>
+
         <el-input v-model="addInput"
                   clearable
                   :maxlength="maxLength"
@@ -46,12 +47,28 @@
     </el-dialog>
 
     <hr>
-    <div></div>
+    <div class="view">
+      <span>第一次</span>
+      <div>
+        日期：<span>{{$moment(value[0]).format('YYYY-MM-DD') + ' ~ '+ $moment(value[1]).format('YYYY-MM-DD')}}</span>
+      </div>
+      <div> 整数：<span>{{input}}</span></div>
+
+    </div>
+    <div class="view">
+      <span>第二次</span>
+      <div>
+        日期：<span>{{$moment(addValue[0]).format('YYYY-MM-DD') + ' ~ '+ $moment(addValue[1]).format('YYYY-MM-DD')}}</span>
+      </div>
+      <div> 整数：<span>{{addInput}}</span></div>
+
+    </div>
 
   </div>
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -69,12 +86,9 @@ export default {
       return {
 
         disabledDate (time) {
-          // console.log(time)
           const maxDate = Date.parse(that.value[0])
           const minDate = Date.parse(that.value[1])
-          const someDate = maxDate - minDate
-          console.log(new Date(someDate))
-          return time.getTime() === someDate
+          return time.getTime() > maxDate && time.getTime() < minDate
         }
       }
     }
@@ -122,5 +136,10 @@ hr {
 .dialog-date-picker {
   display: flex;
   justify-content: center;
+}
+.view {
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
 }
 </style>
