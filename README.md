@@ -1,5 +1,13 @@
 # myvue
 
+
+### 路由访问
+
+题目一： http://localhost:8080/#/topic1
+题目二： http://localhost:8080/#/topic2
+
+
+
 ## Project setup
 ```
 npm install
@@ -24,9 +32,3 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-
-
-### 路由访问
-
-题目一： http://localhost:8080/#/topic1
-题目二： http://localhost:8080/#/topic2
